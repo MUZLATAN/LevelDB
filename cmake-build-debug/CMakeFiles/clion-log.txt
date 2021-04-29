@@ -1,0 +1,11 @@
+/home/z/software/clion-2019.3.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/z/CWorkspace/leveldb
+-- Failed to find LLVM FileCheck
+-- git Version: v1.5.2-bf585a27
+-- Version: 1.5.2
+-- Performing Test HAVE_STD_REGEX -- success
+-- Performing Test HAVE_GNU_POSIX_REGEX -- failed to compile
+-- Performing Test HAVE_POSIX_REGEX -- success
+-- Performing Test HAVE_STEADY_CLOCK -- success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/z/CWorkspace/leveldb/cmake-build-debug
