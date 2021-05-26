@@ -72,6 +72,9 @@ class MemTable {
     int operator()(const char* a, const char* b) const;
   };
 
+  //SkipList 是一个模本类,
+  // const char*  --> typename Key
+  // KeyComparator --> Comparator
   typedef SkipList<const char*, KeyComparator> Table;
 
   ~MemTable();  // Private since only Unref() should be used to delete it

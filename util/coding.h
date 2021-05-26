@@ -105,6 +105,7 @@ inline uint64_t DecodeFixed64(const char* ptr) {
 // Internal routine for use by fallback path of GetVarint32Ptr
 const char* GetVarint32PtrFallback(const char* p, const char* limit,
                                    uint32_t* value);
+//p 是首地址指针  limit = p +5 value是传出的长度
 inline const char* GetVarint32Ptr(const char* p, const char* limit,
                                   uint32_t* value) {
   if (p < limit) {

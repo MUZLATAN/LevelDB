@@ -31,10 +31,10 @@
 #include <cassert>
 #include <cstdlib>
 
-#include "util/arena.h"
-#include "util/random.h"
+#include "Arena.h"
+#include "Random.h"
 
-namespace leveldb {
+
 
 class Arena;
 
@@ -58,6 +58,9 @@ class SkipList {
 
   // Returns true iff an entry that compares equal to key is in the list.
   bool Contains(const Key& key) const;
+
+  // Print all
+  void PrintAll();
 
   // Iteration over the contents of a skip list
   class Iterator {
@@ -140,6 +143,28 @@ class SkipList {
   // Read/written only by Insert().
   Random rnd_;
 };
+template<typename Key, class Comparator>
+void SkipList<Key, Comparator>::PrintAll() {
+
+    int level = GetMaxHeight() - 1;
+    Node* x = head_;
+    while (true) {
+        if (x->Next(level) != nullptr){
+            x= x->Next(level);
+            std::cout<<x->key<<"->";
+        }else if ( level == 0 )
+            return;
+        else
+        {
+            --level;
+            std::cout<<std::endl;
+            x = head_;
+        }
+
+
+    }
+}
+
 
 // Implementation details follow
 template <typename Key, class Comparator>
@@ -379,6 +404,6 @@ bool SkipList<Key, Comparator>::Contains(const Key& key) const {
   }
 }
 
-}  // namespace leveldb
+
 
 #endif  // STORAGE_LEVELDB_DB_SKIPLIST_H_

@@ -305,6 +305,7 @@ Status DBImpl::Recover(VersionEdit* edit, bool* save_manifest) {
 
   if (!env_->FileExists(CurrentFileName(dbname_))) {
     if (options_.create_if_missing) {
+      printf("here no CURRENT file, and create CURRENT\n");
       Log(options_.info_log, "Creating DB %s since it was missing.",
           dbname_.c_str());
       s = NewDB();
@@ -321,6 +322,7 @@ Status DBImpl::Recover(VersionEdit* edit, bool* save_manifest) {
                                      "exists (error_if_exists is true)");
     }
   }
+
 
   s = versions_->Recover(save_manifest);
   if (!s.ok()) {
@@ -1517,7 +1519,7 @@ Status DB::Open(const Options& options, const std::string& dbname, DB** dbptr) {
       impl->log_ = new log::Writer(lfile);
 
       //impl->internal_comparator(BytewiseComparatorImpl)
-      //mem_
+      //mem_ = new ByteWiseComparatorImpl();
       impl->mem_ = new MemTable(impl->internal_comparator_);
       impl->mem_->Ref();
     }
